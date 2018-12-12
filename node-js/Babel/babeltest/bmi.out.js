@@ -38,3 +38,5 @@ var BMI = function () {
 
 var bmi = new BMI(160, 60);
 bmi.print();
+
+//# sourceMappingURL=bmi.out.js.map

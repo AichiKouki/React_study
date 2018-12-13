@@ -9,7 +9,6 @@
   <div id="root"></div>
   <!-- スクリプトの定義 ───(※3) -->
   <script type="text/babel">
-  //第一引数は、今回会がすべき内容。第二引数には、描画先のDOM要素を指定
     ReactDOM.render(
       <h1>Hello, world!</h1>,
       document.getElementById('root')
@@ -27,6 +26,9 @@
 Reactで書き換える文を、div要素で指定。idを付与しているので、Jsからアクセスできる。
 
 (*3)
+第一引数は、今回会がすべき内容。第二引数には、描画先のDOM要素を指定
+render()メソッドを実行することで、DOMを構築して描画するという流れ。
+
 Javascriptを定義しているが、ただしここではJSX文法を使ったJavascriptの拡張言語を記述するので、script要素のtype属性には、"text/javascript"ではなく、"text/babel"と指定する。
 Javascriptの中にHTMLタグが出てきて驚く人もいるかもしれないが、Babelを使うことによって、拡張されたJavascriptのコードを従来の仕様のコードに変換した上で実行される。
 -->

@@ -12,6 +12,7 @@
   <script type="text/babel">
     // クラスでコンポーネントを定義 --- (※1)
     class Greeting extends React.Component {
+        //renderメソッドを定義してその戻り値でコンポーネントの表示内容を指定
       render() {
         //クラスを作っているので、thisをつける
         return <h1>{this.props.type}</h1>

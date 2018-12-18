@@ -1,0 +1,30 @@
+<!--
+・Greetingというコンポーネントを定義してみる
+・引数のprops.typeに与えた文字列を<h1>で囲んで表示する簡単なコンポーネント
+-->
+<!DOCTYPE html><html><head>
+  <meta charset="utf-8">
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head><body>
+  <div id="root"></div>
+  <script type="text/babel">
+    //Reactでコンポーネント定義したところ
+    function Greeting (props){
+        return <h1>{props.type}</h1>
+    }
+    
+    //Greeting コンポーネントを利用する
+    //上で、Greetingコンポーネントを定義したので、Greetingタグが使えるようになってる
+    //<Greeting>タグを使った時点で、Greeting({"type":Hello})って感じで呼び出している
+    const dom = <div>
+        <Greeting type="Good morning!" />
+        <Greeting type="Hello!" />
+         <Greeting type="Good afternoon!" />
+      </div>
+      
+    //Reactで表示する
+    ReactDOM.render(dom,document.getElementById('root')) 
+  </script>
+</body></html>

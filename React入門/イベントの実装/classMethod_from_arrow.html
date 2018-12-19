@@ -1,0 +1,32 @@
+<!--
+・アロー関数で、クラスのメソッドを呼び出す。
+・bind()メソッドを使った呼び出し方だと冗長になる。だから、アロー関数を用いて、thisが有効なスコープでクラスの内側のメソッドを呼び出します。
+-->
+<!DOCTYPE html><html><head>
+  <meta charset="utf-8">
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head><body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // コンポーネントの定義
+    class Hello extends React.Component {
+        // イベントを定義
+         classHandler(){
+            alert('hello');
+        }
+      render () {
+        // クリックイベントを指定
+        //onClickのところに関数オブジェクトを指定して呼び出し
+        return (
+          <button onClick={e => this.classHandler(e)}>Click</button>
+        )
+      }
+    }
+    // コンポーネントを使う
+    ReactDOM.render(
+      <Hello />,
+      document.getElementById('root'))
+  </script>
+</body></html>

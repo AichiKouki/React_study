@@ -20,7 +20,7 @@
         }
         // 毎秒状態を更新する --- (※3)
         setInterval(e => {
-          this.setState({ now: (new Date()) })
+          this.setState({ now: (new Date()) })//状態が更新されると自動的にrenderが呼ばれて再絵画
         }, 1000)
       }
       // 描画内容を返す --- (※4)

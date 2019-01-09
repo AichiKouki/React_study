@@ -1,0 +1,77 @@
+<!DoCTYPE html><html><head>
+  <meta charset="utf-8">
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head><body>
+  <div id="root"></div><!--色のタイルと指定されたタイルは枠を描画-->
+  <div id="info"></div><!--クリックしたタイルの名前を文字列で描画(表示)-->
+  <script type="text/babel">
+    // 色選択コンポーネントの定義 --- (※1)
+    class ColorBox extends React.Component {
+      // コンストラクタ --- (※2)
+      constructor (props) {
+        super(props)
+        // 状態の初期化
+        this.state = {
+          index: 0,
+          colors: ['red','blue','green','yellow','black']
+        }
+      }
+      // 描画 --- (※3)
+      render () {
+        // stateから値を取り出す
+        const colors = this.state.colors
+        const index = this.state.index
+        // 現在の選択色
+        const cur = (index >= 0) ? colors[index] : ''
+        // 各色ごとにspan要素を生成する --- (※4)
+        const items = colors.map((c) => {//map()は、配列の値それぞれ繰り返して処理(cはred、blue、green、、、って感じで順番に)
+          // 選択色なら枠をつける
+          let bs = '1px solid white'
+          if (c == cur) {//それぞれの繰り返しの処理の中で、選択している色なら枠を表すstyle文を新たに代入
+            bs = '1px solid black'
+          }
+          // 色ごとのスタイルを設定
+          const cstyle = {
+            color: c, border: bs
+          }
+          // 色をクリックした時の処理 --- (※5)
+          const clickHandler = (e) => {
+            const c = e.target.style.color
+		console.log("cの値は"+c);
+            const i = this.state.colors.indexOf(c)//indexOfは配列から文字列で検索して、その値の配列番号を取得できる。redなら0になる
+		console.log("iの値は"+i)
+            // 状態を更新する
+            this.setState({index:i})//タイルをクリックしたのだから、選択状態であるindexの値を更新
+            if (this.props.onColorChange) {//<ColorBox>タグを使った時のプロパティの値は関数オブジェクトの名前を指定しているのでその関数が実行される
+              this.props.onColorChange({color:c})//その関数は色の名前の文字列のみを表示するので、引数に色の名前を渡す
+            }
+          }
+          // span要素で色のタイルを返す。map()で配列の値の数だけそれぞれ繰り返し処理してるので、この処理によって5つのタイルが表示される
+          return (
+            <span onClick={clickHandler}
+             style={cstyle}>■</span>
+          )
+        })
+        // 描画内容を返す --- (※6)。さっきのmapで繰り返し処理したものが全てitemsに入ってるので、そのままrender()される
+        return (
+          <div>{items}</div>
+        )
+      }
+    }
+    // ReactでDOMを書き換える --- (※7)。infoは選択したタイルの色の名前を文字列のみで表示
+    const colorHandler = (e) => {
+      ReactDOM.render(
+        <span>{e.color}</span>,
+        document.getElementById('info'))
+    }
+    const dom = <div>
+      <ColorBox id="cb" onColorChange={colorHandler} />
+    </div>
+    ReactDOM.render(dom,
+      document.getElementById('root'))
+  </script>
+</body></html>
+
+

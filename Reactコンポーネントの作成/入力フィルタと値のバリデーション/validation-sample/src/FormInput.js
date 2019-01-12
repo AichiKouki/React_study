@@ -1,3 +1,4 @@
+//CusromInputコンポーネントで、FormInputタグを使っていて、プロパティでnameとかfilterとか指定しているから、汎用的なものになる！
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 

@@ -36,6 +36,7 @@ class App extends Component {
       items: res.body//resはオブジェクトであり、ヘッダー情報やその他情報を含んでいる
     })
   }
+  //optionタグのkeyプロパティは、要素の追加とか削除する場合は、key属性も書いた方が、より最低限のデータ更新となる。
   render () {
     // JSONデータの読み込みが完了してるか? --- (※5)
     if (!this.state.items) {

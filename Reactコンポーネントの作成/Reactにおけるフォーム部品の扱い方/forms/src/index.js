@@ -5,7 +5,9 @@ import App from './App';
 import TextForm from './text';
 import CBoxForm from './cbox';
 import TextAreaForm from './textarea';
-import RadioForm from './radio.js';
+import RadioForm from './radio';
+//radioの中のコンポーネントとselectのコンポーネントで被っている部分があって両方インポートするとエラーがでる
+//import SelectForm from './select';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<RadioForm />, document.getElementById('root'));

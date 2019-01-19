@@ -1,17 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-//ラジオボタンのコンポーネント作成
+
 class RadioForm extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      items: props.items, //このコンポーネントのタグを使ったときに、プロパティの値を指定するので、その値を取得
+      items: props.items,
       value: ''
     }
   }
   render () {
-    // ラジオの選択肢を生成
-    const radiolist = this.state.items.map(i => {//このコンポーネントのタグを使った際にプロパティを指定する。そのプロパティの配列の値の数だけ繰り返し処理して、新たな配列を作成する
+    // ラジオの選択肢を生成	
+     const radiolist = this.state.items.map(i => { //このコンポーネントのタグを使った際にプロパティで指定した配列の要素の数だけ処理して、新たな配列を生成する。つまり、動的にタグを生成
       return (<div key={i}>
         <label>
           <input type='radio'
@@ -21,6 +21,7 @@ class RadioForm extends React.Component {
         </label>
       </div>)
     })
+
     // フォームにラジオ一覧を指定
     return (<div>
       <form onSubmit={e => this.doSubmit(e)}>
@@ -31,17 +32,17 @@ class RadioForm extends React.Component {
   }
   // ラジオボックスを変更したとき
   doChange (e) {
-    this.setState({ value: e.target.value }) //洗濯したラジオボタンの値を、このコンポーネントの状態のvalueに入れる
+    this.setState({ value: e.target.value })
   }
   // フォームを送信したとき
   doSubmit (e) {
-    e.preventDefault()//Formのデフォルトの処理はしないように指定。
-    window.alert(this.state.value) //洗濯したラジオボタンのvalueが状態のvalueに入ってるので、その値をそのまま表示
+    e.preventDefault()
+    window.alert(this.state.value)
   }
 }
 
 ReactDOM.render(
-  <RadioForm items={['チョコ', '梅干し', 'ラムネ']} />,
+  <RadioForm items={['白石麻衣', '秋元真夏', '齋藤飛鳥']} />,
   document.getElementById('root'))
 
 export default RadioForm

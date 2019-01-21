@@ -1,14 +1,16 @@
+//Electronの実行に必要なモジュールを取り込む
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const url = require('url')
+//Electronのライフサイクルを定義
+let mainWindow //メインウィンドウを表す変数
 
-let mainWindow
-
+//ウィンドウを作成してコンテンツを読み込む
 function createWindow() {
   mainWindow = new BrowserWindow({ width: 800, height: 600 })
 
   // 環境変数 ELECTRON_START_URL が定義されていればそれを使う。なければ index.html を使う。
-  const startUrl = process.env.ELECTRON_START_URL || url.format({
+  const startUrl = process.env.ELECTRON_START_URL || url.format({//読み込むコンテンツを指定。index.htmlを読み込む
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
@@ -20,6 +22,7 @@ function createWindow() {
     mainWindow.webContents.openDevTools()
   }
 
+  //ウィンドウが閉じる時の処理
   mainWindow.on('closed', _ => {
     mainWindow = null
   })

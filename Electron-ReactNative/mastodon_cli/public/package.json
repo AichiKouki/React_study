@@ -1,5 +1,5 @@
 {
-  "name": "helloworld",
+  "name": "mastodon_cli",
   "version": "1.0.0",
   "main": "main.js"
 }

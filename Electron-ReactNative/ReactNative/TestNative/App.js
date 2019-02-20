@@ -9,7 +9,9 @@
 
 //必要なモジュールの宣言
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View,AlertIOS} from 'react-native';
+
+import AppIntro from './AppIntro'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,14 +20,16 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+import {Calendar} from 'react-native-calendars';
+
 // メインコンポーネントの宣言 --- (※1)
 export default class TestNative extends Component {
+		
   render () {
     // 配列データを定義 --- (※2)
     const lines = [
-      '生まれるのに時あり', '死ぬのに時がある', '---',
-      '泣くのに時があり', '笑うのに時がある', '---',
-      '黙っているのに時があり', '話すのに時がある'
+      'カレンダーを表示しています。', '---',
+      '好きな日付を選択して、予定を入力してください'
     ]
     // 配列データを元に複数のコンポーネントを生成 --- (※3)
      //あらかじめ用意されているTextコンポーネントを使って値を指定して複数のTextコンポーネントを作成。
@@ -37,6 +41,21 @@ export default class TestNative extends Component {
     })
     return (
       <View style={styles.container}>
+      //<AppIntro />
+      <Calendar
+        current={'2019-02-10'}  //現在の日付を指定
+  minDate={'2018-06-01'}
+  maxDate={'2018-06-15'}
+  //onDayPress={(day) => {console.log('selected day', day)}}
+  onDayPress={(day) => {AlertIOS.alert('','アラートを表示してみた',[{text:'OK'}]);}}
+    markedDates={{
+    '2019-02-10': { selected: true }, // 日付の背景に色（デフォルト）がつく
+    '2019-02-11': { marked: true },  // 日付の下にドット（デフォルト）がつく
+    '2019-02 -12': { selected: true, marked: true }, // selectedもmarkedもtrueの場合、ドットマークは白になる
+    '2018-07-05': { selected: true, selectedColor: 'green' },　// 背景の色を変更したいときはselectedColorを指定する
+    '2018-07-06': { marked: true, dotColor: 'red' }, // ドット色を変更したいときはdotColorを指定する
+  }}
+       />
         {textLines}
       </View>
     )

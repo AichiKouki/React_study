@@ -11,7 +11,7 @@ app.get('/', (req, res) => {//ルートにアクセスしたらこの処理
     '<a href="/dice/12">12面体のサイコロ</a></p>')
 })
 // サイコロへのアクセス
-app.get('/dice/6', (req, res) => {//
+app.get('/dice/6', (req, res) => {//「dice/6」ってアクセスしたら6面体の処理がされる
   res.send('今回の値は...' + dice(6))//res.sendメソッドでその内容を表示する
 })
 app.get('/dice/12', (req, res) => {

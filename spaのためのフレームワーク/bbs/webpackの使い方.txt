@@ -1,0 +1,16 @@
+〜動かし方〜
+ここのディレクトリで、
+webpack src/main.js --output src/out/hogehoge.js
+って感じでやる
+
+〜環境構築〜
+#Webpackをインストール
+npm i --save-dev webpack
+#Reactをインストール
+npm i --save-dev react react-dom
+#Babelをインストール
+npm i --save-dev babel-loader babel-core
+#Reactプリセットをインストール
+npm i @babel/preset-env
+
+次に、webpack.config.jsを生成する。このプロジェクトのwebpack.config.jsのようにする。

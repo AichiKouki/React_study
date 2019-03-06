@@ -1,7 +1,7 @@
 〜動かし方〜
 ここのディレクトリで、
-webpack src/main.js --output src/out/hogehoge.js
-って感じでやる
+webpack src/index.js --output public/bundle.js
+って感じでファイル名まで指定する
 
 〜環境構築〜
     "@babel/core": "^7.3.4",

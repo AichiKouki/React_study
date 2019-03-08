@@ -51,6 +51,7 @@ export default class SNSTimeline extends Component {
     })
     return (
       <div>
+        <h3>ユーザーID「{window.localStorage.sns_id}」でログイン中</h3>
         <h1>タイムライン</h1>
         <div>
           <input value={this.state.comment} size={40}

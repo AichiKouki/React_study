@@ -58,8 +58,10 @@ export default class SNSUsers extends Component {
       return <Redirect to={this.state.jump} />
     }
     const friends = this.state.friends ? this.state.friends : {}
+    console.log(this.state.users)// ["d", "aichi"]って感じで取得できた
     const ulist = this.state.users.map(id => {
       //三項演算子で(※1)で取得した情報を元に、すでに友達になっているかを判断し、友達になっていなければ、友達追加のボタンを表示する。
+      if(id==window.localStorage.sns_id) return //ユーザー一覧で、自分だけは表示しないようにするため(自分自身を友達追加というバグ対策)
       const btn = (friends[id])
         ? `${id}は友達です`
         : (<button onClick={eve => this.addFriend(id)}>

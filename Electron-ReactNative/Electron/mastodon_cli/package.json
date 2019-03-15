@@ -18,7 +18,7 @@
     "react-start": "react-scripts start",
     "react-build": "react-scripts build",
     "start": "concurrently \"npm run react-start\" \"npm run electron-dev\"",
-    "build": "npm run react-build && npm run electron-build" ,
+    "build": "npm run react-build && npm run electron-build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
